@@ -3,6 +3,7 @@ require("dotenv/config");
 const express = require("express");
 const session = require("express-session");
 const sequelize = require("./config/connection");
+const Store = require("connect-session-sequelize")(session.Store);
 const sessionConfig = {
 	secret: process.env.SESSION_SECRET,
 	resave: false,
@@ -10,6 +11,9 @@ const sessionConfig = {
 		maxAge: 1000 * 60 * 60 * 24 * 7,
 	},
 	saveUninitialized: false,
+	store: new Store({
+		db: sequelize,
+	}),
 };
 
 const app = express();

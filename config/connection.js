@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 
+console.log("process.env.JAWSDB", process.env.JAWSDB);
 const sequelize = process.env.JAWSDB
 	? new Sequelize(process.env.JAWSDB)
 	: new Sequelize(
