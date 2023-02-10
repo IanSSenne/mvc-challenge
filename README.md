@@ -1,8 +1,12 @@
-# Tech Blog
+# SQL Employee Management System
+
+![License - Unlicense](https://img.shields.io/static/v1?label=License&message=Unlicense&color=blue&style=plastic)
+
+A small blog using sequelize and express with auth sessions.
+
+View it at [https://sleepy-atoll-24640.herokuapp.com/](https://sleepy-atoll-24640.herokuapp.com/)
 
 ![image](https://user-images.githubusercontent.com/48780301/218080226-a0a0ef1d-ba5c-4b28-951e-519c3ff0bf73.png)
-
-A small block using sequelize and express with auth sessions.
 
 ## Table of Contents
 
@@ -21,13 +25,11 @@ A small block using sequelize and express with auth sessions.
 
 1. Install dependencies with `yarn` or `npm i`
 
-2. copy the env template and fill in its values.
+2. Using mysql run the schema.sql file to create the database
 
-3. Using mysql run the schema.sql file to create the database
+   a. you can also optionally run the seed.sql file to get some testing or example data.
 
-   a. you can also optionally run the `seed` npm command
-
-4. run the app using `node server.js` or `yarn start` or `npm start`
+3. run the app using `node index.js` or `yarn start` or `npm start`
 
 ## Contributing
 
