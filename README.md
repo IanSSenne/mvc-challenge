@@ -25,11 +25,13 @@ View it at [https://sleepy-atoll-24640.herokuapp.com/](https://sleepy-atoll-2464
 
 1. Install dependencies with `yarn` or `npm i`
 
-2. Using mysql run the schema.sql file to create the database
+2. copy the env template and fill in its values.
 
-   a. you can also optionally run the seed.sql file to get some testing or example data.
+3. Using mysql run the schema.sql file to create the database
 
-3. run the app using `node index.js` or `yarn start` or `npm start`
+   a. you can also optionally run the `seed` npm command
+
+4. run the app using `node server.js` or `yarn start` or `npm start`
 
 ## Contributing
 
