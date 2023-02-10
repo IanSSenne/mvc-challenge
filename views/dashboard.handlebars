@@ -1,0 +1,14 @@
+<a class="button is-primary" id="new-post" href="/dashboard/new">New Post</a>
+
+{{#each posts}}
+<a href="/dashboard/edit/{{this.id}}">
+	<div class="card">
+		<div class="card-content">
+			<div class="content">
+				<p><strong>{{this.title}}</strong> - {{formatTime this.createdAt}}</p>
+				<p>{{summary this.content}}</p>
+			</div>
+		</div>
+	</div>
+</a>
+{{/each}}

@@ -14,7 +14,14 @@ const sessionConfig = {
 
 const app = express();
 const port = process.env.PORT;
-
+app.use((req, res, next) => {
+	try {
+		next();
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
 app.engine(
 	"handlebars",
 	require("express-handlebars").engine({

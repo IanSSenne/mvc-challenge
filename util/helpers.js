@@ -4,5 +4,7 @@ function summary(text) {
 	}
 	return text.substring(0, 100) + "...";
 }
-
-module.exports = { summary };
+function formatTime(time) {
+	return time.toLocaleString();
+}
+module.exports = { summary, formatTime };

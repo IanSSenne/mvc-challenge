@@ -1,0 +1,34 @@
+{{#if isNew}}
+<h1 class="is-size-3">Create a new post</h1>
+<form id="create">
+	editing <strong>{{post.title}}</strong></h1>
+<form id="edit">
+	<input type="hidden" name="id" id="id" value="{{post.id}}">
+	<label for="title">
+		Title
+	</label>
+	<input type="text" name="title" id="title" value="{{post.title}}" class="input">
+	<label for="content">
+		Content
+	</label>
+	<textarea name="content" id="content" class="textarea">{{post.content}}</textarea>
+	<button class="button is-link" type="submit">Create</button>
+</form>
+{{else}}
+<h1 class="is-size-3">editing <strong>{{post.title}}</strong></h1>
+<form id="edit">
+	<input type="hidden" name="id" id="id" value="{{post.id}}">
+	<label for="title">
+		Title
+	</label>
+	<input type="text" name="title" id="title" value="{{post.title}}" class="input">
+	<label for="content">
+		Content
+	</label>
+	<textarea name="content" id="content" class="textarea">{{post.content}}</textarea>
+	<button class="button is-link" type="submit">Update</button>
+	<button class="button has-background-danger" type="button" id="delete">Delete</button>
+</form>
+{{/if}}
+
+<script src="/js/edit.js"></script>

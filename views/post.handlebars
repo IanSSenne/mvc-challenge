@@ -1,6 +1,51 @@
+{{!-- {{log post}} --}}
 <h1 class="is-size-4">{{post.title}}</h1>
 <h2 class="is-size-6">By {{post.user.name}}</h2>
-
+<p>Posted at {{formatTime post.createdAt}}</p>
+<hr>
 <p>{{post.content}}</p>
 
 <hr/>
+
+<h3 class="is-size-5">Comments</h3>
+{{#each post.comments}}
+<div class="card">
+	<div class="card-content">
+		<div class="content">
+			<p><strong>{{this.user.name}}</strong> - {{formatTime this.createdAt}}</p>
+			<p>{{this.comment_text}}</p>
+		</div>
+	</div>
+</div>
+{{/each}}
+
+{{#if session.logged_in}}
+<div class="card">
+	<div class="card-content">
+		<div class="content">
+			<form id="comment-form">
+				<input type="hidden" id="post_id" value="{{post.id}}">
+				<div class="field">
+					<label class="label" for="comment_text">Add Comment</label>
+					<div class="control">
+						<textarea class="textarea" name="comment" placeholder="Comment" id="comment_text"></textarea>
+					</div>
+				</div>
+				<div class="field">
+					<div class="control">
+						<button class="button is-link" type="submit">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script src="/js/comment.js"></script>
+{{else}}
+<div class="card">
+	<div class="card-content">
+		<div class="content">
+			<p><a href="/login">Log in</a> to comment</p>
+		</div>
+	</div>
+{{/if}}

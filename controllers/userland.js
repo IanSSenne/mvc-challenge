@@ -20,6 +20,7 @@ router.get("/login", (req, res) => {
 
 router.get("/dashboard", authenticatedUser, async (req, res) => {
 	const Posts = await Post.findAll({
+		where: { user_id: req.session.user_id },
 		include: [
 			{
 				model: User,
@@ -32,8 +33,19 @@ router.get("/dashboard", authenticatedUser, async (req, res) => {
 		session: req.session,
 		posts: Posts.map((_) => _.get({ plain: true })),
 	});
+});
 
-	res.render("dashboard", { session: req.session });
+router.get("/dashboard/new", authenticatedUser, (req, res) => {
+	res.render("editor", { session: req.session, isNew: true });
+});
+
+router.get("/dashboard/edit/:id", authenticatedUser, async (req, res) => {
+	const post = await Post.findByPk(req.params.id);
+	res.render("editor", {
+		session: req.session,
+		isNew: false,
+		post: post.get({ plain: true }),
+	});
 });
 
 router.get("/post/:id", async (req, res) => {
@@ -45,7 +57,7 @@ router.get("/post/:id", async (req, res) => {
 			},
 			{
 				model: Comment,
-				attributes: ["id", "comment_text", "user_id", "post_id"],
+				attributes: ["id", "comment_text", "user_id", "post_id", "createdAt"],
 				include: [{ model: User, attributes: ["id", "name"] }],
 			},
 		],
