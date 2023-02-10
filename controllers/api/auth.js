@@ -14,7 +14,7 @@ route.post("/signup", async (req, res) => {
 			.json({ message: "An account already exists with this email" });
 	}
 
-	const user = User.create({
+	const user = await User.create({
 		name: req.body.name,
 		password: req.body.password,
 		email: req.body.email,
