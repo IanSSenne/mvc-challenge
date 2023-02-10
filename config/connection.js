@@ -8,8 +8,7 @@ const sequelize = process.env.JAWSDB
 			process.env.DB_PASS,
 			{
 				dialect: "mysql",
-				logging: false,
+				logging: true,
 			}
 	  );
-
 module.exports = sequelize;

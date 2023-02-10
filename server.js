@@ -2,18 +2,36 @@ require("dotenv/config");
 
 const express = require("express");
 const session = require("express-session");
+const sequelize = require("./config/connection");
 const sessionConfig = {
 	secret: process.env.SESSION_SECRET,
 	resave: false,
 	cookie: {
 		maxAge: 1000 * 60 * 60 * 24 * 7,
 	},
+	saveUninitialized: false,
 };
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
-app.engine("handlebars", require("express-handlebars").engine());
+app.engine(
+	"handlebars",
+	require("express-handlebars").engine({
+		helpers: {
+			log(optionalValue) {
+				console.log("Current Context");
+				console.log("====================");
+				console.log(this);
+				if (optionalValue) {
+					console.log("Value");
+					console.log("====================");
+					console.log(optionalValue);
+				}
+			},
+		},
+	})
+);
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
@@ -25,6 +43,8 @@ app.use(session(sessionConfig));
 
 app.use("/", require("./controllers"));
 
-app.listen(port, () => {
-	console.log(`Server listening on port ${port}`);
+sequelize.sync({ force: true }).then(() => {
+	app.listen(port, () => {
+		console.log(`Server listening on port ${port}`);
+	});
 });

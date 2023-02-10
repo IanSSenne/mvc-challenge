@@ -36,9 +36,15 @@
 				<div class="navbar-end">
 					<div class="navbar-item">
 						<div class="buttons">
+							{{log}}
+							{{#if session.logged_in}}
+								<a class="button is-light" id="logout-button">Log out</a>
+								<script src="/js/logout.js"></script>
+							{{else}}
 							<a class="button is-light" href="/login">
 								Log in
 							</a>
+							{{/if}}
 						</div>
 					</div>
 				</div>
