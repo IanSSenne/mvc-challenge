@@ -9,7 +9,7 @@
 	<body>
 		<nav class="navbar" role="navigation" aria-label="main navigation">
 			<div class="navbar-brand">
-				<a class="navbar-item" href="https://bulma.io">
+				<a class="navbar-item" href="/">
 					<h1 class="is-size-3">.Blog</h1>
 				</a>
 
@@ -28,22 +28,23 @@
 
 			<div id="navbarBasicExample" class="navbar-menu">
 				<div class="navbar-start">
-					<a class="navbar-item">
-						Home
+					<a class="navbar-item" href="/">
+						Homepage
+					</a>
+					<a class="navbar-item" href="/dashboard">
+						Dashboard
 					</a>
 				</div>
 
 				<div class="navbar-end">
 					<div class="navbar-item">
 						<div class="buttons">
-							{{log}}
 							{{#if session.logged_in}}
 								<a class="button is-light" id="logout-button">Log out</a>
-								<script src="/js/logout.js"></script>
 							{{else}}
-							<a class="button is-light" href="/login">
-								Log in
-							</a>
+								<a class="button is-light" href="/login">
+									Log in
+								</a>
 							{{/if}}
 						</div>
 					</div>
@@ -51,8 +52,10 @@
 			</div>
 		</nav>
 		<div class="ml-5 mr-5">
-
-		{{{body}}}
+			{{{body}}}
 		</div>
+		{{#unless session.logged_in}}
+		<script src="/js/logout.js"></script>
+		{{/unless}}
 	</body>
 </html>

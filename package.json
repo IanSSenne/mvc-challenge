@@ -14,6 +14,10 @@
 		"sequelize": "6"
 	},
 	"scripts": {
-		"start": "node server.js"
+		"start": "node server.js",
+		"seed": "node scripts/seed.js"
+	},
+	"devDependencies": {
+		"@faker-js/faker": "^7.6.0"
 	}
 }

@@ -1,1 +1,8 @@
-<h1>{{post.title}}</h1>
+{{#if link}}
+	<a href="/post/{{post.id}}">
+{{/if}}
+		<h1>{{post.title}} - {{post.user.name}}</h1>
+{{#if link}}
+	</a>
+	{{summary post.content}}
+{{/if}}

@@ -22,6 +22,13 @@ Post.init(
 			type: DataTypes.TEXT,
 			allowNull: false,
 		},
+		author: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: "user",
+				key: "id",
+			},
+		},
 	},
 	{
 		sequelize,

@@ -19,6 +19,7 @@ app.engine(
 	"handlebars",
 	require("express-handlebars").engine({
 		helpers: {
+			...require("./util/helpers"),
 			log(optionalValue) {
 				console.log("Current Context");
 				console.log("====================");
@@ -43,7 +44,7 @@ app.use(session(sessionConfig));
 
 app.use("/", require("./controllers"));
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
 	app.listen(port, () => {
 		console.log(`Server listening on port ${port}`);
 	});
