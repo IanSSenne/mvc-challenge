@@ -41,6 +41,7 @@
 						<div class="buttons">
 							{{#if session.logged_in}}
 								<a class="button is-light" id="logout-button">Log out</a>
+								<script src="/js/logout.js"></script>
 							{{else}}
 								<a class="button is-light" href="/login">
 									Log in
@@ -54,8 +55,5 @@
 		<div class="ml-5 mr-5">
 			{{{body}}}
 		</div>
-		{{#unless session.logged_in}}
-		<script src="/js/logout.js"></script>
-		{{/unless}}
 	</body>
 </html>
