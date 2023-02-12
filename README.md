@@ -1,4 +1,4 @@
-# SQL Employee Management System
+# MVC Blog
 
 ![License - Unlicense](https://img.shields.io/static/v1?label=License&message=Unlicense&color=blue&style=plastic)
 
